@@ -1,10 +1,12 @@
 //Capture DOM elements
-const body = document.querySelector('.space')
+const body = document.querySelector('#home')
 const card = document.querySelector('.card')
 const cardBody = document.querySelector('.card-body')
 const cardTitle = document.querySelector('.card-title')
 const cardText = document.querySelector('.card-text')
 const readMore = document.querySelector('.card-link')
+const discover = document.querySelector("#discover")
+const navLink = document.querySelectorAll(".nav-link")
 
 //Capture of the Nasa APOD api key
 const url = 'https://api.nasa.gov/planetary/apod?api_key=uh5Hr2gPTUW6ZznWiHgghsswiDaRbO7NbymLe4bt&count='
@@ -63,13 +65,24 @@ function render(data) {
         //Getting the card link
         const cardLink = document.createElement('a')
         cardLink.href = "#"
+        // cardLink.target = "_blank"
         cardLink.classList.add('card-link')
         cardLink.textContent = "Read more"
+        //Adding an event listener to redirect users to where they can get more information
+        cardLink.addEventListener('click', () => moreDetails(element))
         cardBody.append(cardLink)
 
         //Adding the card elements to the card
         card.append(cardBody)
-
     });
 }
 
+// navLink.addEventListener('click', ()=> {
+//     navLink.forEach((link) => console.log(link))
+// })
+
+//Function to show more details on specific elements
+function moreDetails (element) {
+    // Redirect to explanations.html with the message in the query string
+    window.location.href = `explanations.html?message=${encodeURIComponent(element)}`;
+}

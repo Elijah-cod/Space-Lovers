@@ -28,7 +28,7 @@ nav a:hover {
 }
 
 
-.space {
+#home {
     width: 100%;
     display: flex;
     padding: 10px;
@@ -37,13 +37,23 @@ nav a:hover {
     gap: 20px;
 }
 
+#home img {
+    width: auto;
+    height: 200px;
+}
+
+.hide {
+    display: none;
+}
+
+
 @media (max-width: 480px) {
-    .space .card{
+    #home .card{
         display: block;
         margin: 10px auto;
     }
 
-    .space .card img {
+    #home .card img {
         width: 270px;
         display: block;
         margin: 5px auto;
