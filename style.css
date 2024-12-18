@@ -19,47 +19,14 @@
     width: auto;
 }
 
-.tabs {
-    display: flex;
-    gap: 30px;
-    align-items: center;
+nav a {
+    margin-right: 50px;
 }
 
-.tabs li a{
-    text-decoration: none;
-    color: white;
-}
-
-.tabs li a:hover{
-    cursor: pointer;
-    padding-bottom: 5px;
-    border-bottom: 2px solid white;
-}
-
-.rightnav {
-    display: flex;
-    gap: 15px;
-}
-
-.rightnav input {
-    padding: 10px;
-    border-radius: 15px;
-}
-
-.rightnav button {
-    background-color: white;
-    color: black;
-    border-radius: 10px;
-    width: 90px;
-    font-size: 16px;
-    font-weight: 800;
-}
-
-.rightnav button:hover {
-    cursor: pointer;
+nav a:hover {
     letter-spacing: 2px;
-    /* border-bottom: 2px solid black; */
 }
+
 
 .space {
     width: 100%;
