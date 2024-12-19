@@ -83,6 +83,16 @@ function render(data) {
 
 //Function to show more details on specific elements
 function moreDetails (element) {
-    // Redirect to explanations.html with the message in the query string
-    window.location.href = `explanations.html?message=${encodeURIComponent(element)}`;
+    //Create an object that we should be adding more details to
+    const moreDetails = {
+        title: element.title,
+        image: element.url,
+        description: element.explanation
+    }
+
+    // Save the object to localStorage
+    localStorage.setItem("details", JSON.stringify(moreDetails))
+
+    // Redirect and open the target HTML file in a new tab
+    window.open("explanation.html", "_blank");
 }
