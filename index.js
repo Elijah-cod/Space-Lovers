@@ -5,7 +5,10 @@ const cardBody = document.querySelector('.card-body')
 const cardTitle = document.querySelector('.card-title')
 const cardText = document.querySelector('.card-text')
 const readMore = document.querySelector('.card-link')
-const apod = document.getElementById('apod');
+const apod = document.getElementById('apod')
+const search = document.getElementById('search')
+const input = document.getElementById('input')
+const result = document.getElementById('result')
 
 //Display random images every time the page loads
 window.onload = async function () {
@@ -125,6 +128,8 @@ function pictureOfTheDay () {
     fetch(url)
     .then(response => response.json())
     .then(data => {
+        //Clear the previous data because it updates the POD everyday
+        apod.innerHTML = " "
         apod.innerHTML = `
             <div class="heading"> 
             <img src=${data.url} alt=${data.title}>
@@ -137,3 +142,21 @@ function pictureOfTheDay () {
             `
     })
 }
+
+//Function to capture the input item and use it for search and then update the DOM
+search.addEventListener('click', ()=>{
+    result.classList.remove('hide')
+    home.classList.add('hide');
+    apod.classList.add('hide');
+
+    const searchItem = input.value
+
+    //If the input field is not empty perform search
+    if (searchItem) {
+        const url = `https://images-api.nasa.gov/search?q=${searchItem}`
+
+        fetch(url)
+        .then(response => response.json())
+        .then(data => console.log(data))
+    } 
+})
