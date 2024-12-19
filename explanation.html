@@ -38,6 +38,13 @@
             p{
                 margin: 20px;
             }
+
+            @media (max-width: 480px){
+                img {
+                    height: 250px;
+                    width: auto;
+                }
+            }
         </style>
     </head>
 <body>
@@ -53,7 +60,9 @@
             <h1>Space Lovers👽</h1>
             <img src=${moreDetails.image} alt=${moreDetails.title}>
             <h2>${moreDetails.title}</h2>
-            <p>${moreDetails.description}</p>`
+            <p>${moreDetails.description}</p>
+            <p class="date"><strong>DATE: </strong>${moreDetails.date}</p>
+            `
     </script>
 </body>
 </html>

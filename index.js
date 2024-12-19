@@ -5,16 +5,15 @@ const cardBody = document.querySelector('.card-body')
 const cardTitle = document.querySelector('.card-title')
 const cardText = document.querySelector('.card-text')
 const readMore = document.querySelector('.card-link')
-const discoverContent = document.getElementById('discover');
-
-//Capture of the Nasa APOD api key
-const url = 'https://api.nasa.gov/planetary/apod?api_key=uh5Hr2gPTUW6ZznWiHgghsswiDaRbO7NbymLe4bt&count='
-
-//Capture of the count that will help generate random images on the photo of the day
-const count = () => Math.floor(Math.random() * 20) + 1
+const apod = document.getElementById('apod');
 
 //Display random images every time the page loads
 window.onload = async function () {
+    //Capture of the Nasa Count api key
+    const url = 'https://api.nasa.gov/planetary/apod?api_key=uh5Hr2gPTUW6ZznWiHgghsswiDaRbO7NbymLe4bt&count='
+
+    //Capture of the count that will help generate random images on the photo of the day
+    const count = () => Math.floor(Math.random() * 50) + 1
     try {
         const response = await fetch(url + count())
         const data = await response.json()
@@ -81,7 +80,8 @@ function moreDetails(element) {
     const moreDetails = {
         title: element.title,
         image: element.url,
-        description: element.explanation
+        description: element.explanation,
+        date: element.date
     }
 
     // Save the object to localStorage
@@ -95,23 +95,45 @@ function moreDetails(element) {
 function switchTab(tab) {
     // Select the tab elements
     const homeTab = document.getElementById('home-tab');
-    const discoverTab = document.getElementById('discover-tab');
+    const apodTab = document.getElementById('apod-tab');
 
     if (tab === 'home') {
         // Show Home content and hide Discover content
         home.classList.remove('hide');
-        discoverContent.classList.add('hide');
+        apod.classList.add('hide');
 
         // Set active tab
         homeTab.classList.add('active');
-        discoverTab.classList.remove('active');
-    } else if (tab === "discover") {
+        apodTab.classList.remove('active');
+    } else if (tab === "apod") {
+        pictureOfTheDay()
         // Show Discover content and hide Discover content
-        discoverContent.classList.remove('hide');
+        apod.classList.remove('hide');
         home.classList.add('hide');
 
         // Set active tab
-        discoverTab.classList.add('active');
+        apodTab.classList.add('active');
         homeTab.classList.remove('active');
     }
+}
+
+//Function to display the Astronomy Picture of the Day
+function pictureOfTheDay () {
+    //Nasa APOD url API
+    const url = "https://api.nasa.gov/planetary/apod?api_key=uh5Hr2gPTUW6ZznWiHgghsswiDaRbO7NbymLe4bt"
+
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {
+        apod.innerHTML = `
+            <div class="heading"> 
+            <img src=${data.url} alt=${data.title}>
+            <h1>Astronomy Picture of the Day</h1>
+            </div>
+            <img id="image" src=${data.url} alt=${data.title}>
+            <h2>${data.title}</h2>
+            <p>${data.explanation}</p>
+            <p class="date"><strong>DATE: </strong>${data.date}</p>
+            `
+    })
 }
