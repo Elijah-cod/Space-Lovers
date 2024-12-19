@@ -21,6 +21,7 @@
 
 nav a {
     margin-right: 50px;
+    padding-bottom: 2px;
 }
 
 nav a:hover {
@@ -43,7 +44,11 @@ nav a:hover {
 }
 
 .hide {
-    display: none;
+    display: none !important;
+}
+
+.active {
+    border-bottom: 2px solid white;
 }
 
 
@@ -57,5 +62,10 @@ nav a:hover {
         width: 270px;
         display: block;
         margin: 5px auto;
+    }
+
+    #home-tab,
+    #discover-tab {
+        border: none;
     }
 }

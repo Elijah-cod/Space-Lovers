@@ -1,12 +1,11 @@
 //Capture DOM elements
-const body = document.querySelector('#home')
+const home = document.querySelector('#home')
 const card = document.querySelector('.card')
 const cardBody = document.querySelector('.card-body')
 const cardTitle = document.querySelector('.card-title')
 const cardText = document.querySelector('.card-text')
 const readMore = document.querySelector('.card-link')
-const discover = document.querySelector("#discover")
-const navLink = document.querySelectorAll(".nav-link")
+const discoverContent = document.getElementById('discover');
 
 //Capture of the Nasa APOD api key
 const url = 'https://api.nasa.gov/planetary/apod?api_key=uh5Hr2gPTUW6ZznWiHgghsswiDaRbO7NbymLe4bt&count='
@@ -25,11 +24,9 @@ window.onload = async function () {
     }
 }
 
-
-
 //Function to update the DOM with the data captured
 function render(data) {
-    body.innerHTML = ' '
+    home.innerHTML = ' '
     card.innerHTML = ' '
 
     //Display the data on the DOM
@@ -38,7 +35,6 @@ function render(data) {
         const card = document.createElement('div')
         card.classList.add('card')
         card.style = "width: 18rem;"
-        body.append(card)
 
         //Adding the image to the card
         const image = document.createElement('img')
@@ -74,15 +70,13 @@ function render(data) {
 
         //Adding the card elements to the card
         card.append(cardBody)
+        // Adding the card to the home section
+        home.append(card)
     });
 }
 
-// navLink.addEventListener('click', ()=> {
-//     navLink.forEach((link) => console.log(link))
-// })
-
 //Function to show more details on specific elements
-function moreDetails (element) {
+function moreDetails(element) {
     //Create an object that we should be adding more details to
     const moreDetails = {
         title: element.title,
@@ -95,4 +89,29 @@ function moreDetails (element) {
 
     // Redirect and open the target HTML file in a new tab
     window.open("explanation.html", "_blank");
+}
+
+//Function to switch to the different tabs
+function switchTab(tab) {
+    // Select the tab elements
+    const homeTab = document.getElementById('home-tab');
+    const discoverTab = document.getElementById('discover-tab');
+
+    if (tab === 'home') {
+        // Show Home content and hide Discover content
+        home.classList.remove('hide');
+        discoverContent.classList.add('hide');
+
+        // Set active tab
+        homeTab.classList.add('active');
+        discoverTab.classList.remove('active');
+    } else if (tab === "discover") {
+        // Show Discover content and hide Discover content
+        discoverContent.classList.remove('hide');
+        home.classList.add('hide');
+
+        // Set active tab
+        discoverTab.classList.add('active');
+        homeTab.classList.remove('active');
+    }
 }
