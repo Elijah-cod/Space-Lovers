@@ -29,7 +29,8 @@ nav a:hover {
 }
 
 
-#home {
+#home,
+#result {
     width: 100%;
     display: flex;
     padding: 10px;
@@ -136,5 +137,16 @@ p {
     #apod #image{
         height: 250px;
         width: auto;
-    } 
+    }
+    
+    #result .card{
+        width: 200px;
+    }
+    #result .card video {
+        width: auto;
+    }
+
+    #result .card-body {
+        text-wrap: wrap;
+    }
 }
