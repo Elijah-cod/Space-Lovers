@@ -19,7 +19,7 @@ window.onload = async function () {
     const url = 'https://api.nasa.gov/planetary/apod?api_key=uh5Hr2gPTUW6ZznWiHgghsswiDaRbO7NbymLe4bt&count='
 
     //Capture of the count that will help generate random images on the photo of the day
-    const count = () => Math.floor(Math.random() * 50) + 1
+    const count = () => Math.floor(Math.random() * 60) + 1
     try {
         const response = await fetch(url + count())
         const data = await response.json()
@@ -82,7 +82,7 @@ function render(data) {
 
 //Function to show more details on specific elements
 function moreDetails(element) {
-    //Create an object that we should be adding more details to
+    //Create an object of contents we would like to share with explantions.html
     const moreDetails = {
         title: element.title,
         image: element.url,
@@ -170,7 +170,7 @@ search.addEventListener('click', () => {
     input.value = " "
 })
 
-//Function to update the DOM with the search results
+//Function to update the DOM with if search results are videos
 function displaySearch(data) {
     result.innerHTML = '';  // Clear any existing content in the result
     data.forEach(item => {
@@ -186,7 +186,7 @@ function displaySearch(data) {
     })
 }
 
-//Function to allow for the users to play the video in the search
+//Function to update the DOM with the videos
 function createVideoPlayer(vids, item) {
     //Retuns a list of video links
     const videoLink = vids.filter(data => data.endsWith('.mp4'))
