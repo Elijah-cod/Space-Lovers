@@ -1,6 +1,6 @@
 # Space-Lovers
 This project is for lovers of the cosmos 😉—those who are fascinated by our vast universe and eager to learn more about it from NASA's experts. You can explore different cosmic events that have occurred, view the hand-selected Picture of the Day from our friends at NASA, and discover a variety of other breathtaking images they've curated.
-Here is the [Link](https://elijah-cod.github.io/Space-Lovers/](https://space-lovers-qa8bzp0pu-elijahs-projects-702bf2c3.vercel.app/?#) to access the project.
+Here is the [Link](https://space-lovers-qa8bzp0pu-elijahs-projects-702bf2c3.vercel.app/?#) to access the project.
 
 
 ![screenshot](Screenshot.png)
